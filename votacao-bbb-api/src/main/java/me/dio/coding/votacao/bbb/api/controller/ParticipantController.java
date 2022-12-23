@@ -6,6 +6,7 @@ import me.dio.coding.votacao.bbb.api.service.ParticipantService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -27,5 +28,10 @@ public class ParticipantController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(participantModel.get());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ParticipantModel>> findAll() {
+        return ResponseEntity.ok(participantService.findAll());
     }
 }
