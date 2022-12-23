@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ParticipantRepository extends MongoRepository<ParticipantModel, String> {
+
+    ParticipantModel findByName(String name);
 }
