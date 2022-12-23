@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/dio.iml" filepath="$PROJECT_DIR$/.idea/dio.iml" />
       <module fileurl="file://$PROJECT_DIR$/votacao-bbb-api/votacao-bbb-api.iml" filepath="$PROJECT_DIR$/votacao-bbb-api/votacao-bbb-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/votacao-bbb-microservico/votacao-bbb-microservico.iml" filepath="$PROJECT_DIR$/votacao-bbb-microservico/votacao-bbb-microservico.iml" />
     </modules>
   </component>
 </project>
