@@ -2,23 +2,34 @@ package me.dio.coding.votacao.bbb.api.controller;
 
 import lombok.AllArgsConstructor;
 import me.dio.coding.votacao.bbb.api.model.ParticipantModel;
+import me.dio.coding.votacao.bbb.api.repository.ParticipantRepository;
 import me.dio.coding.votacao.bbb.api.service.VoteService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.Part;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/vote")
 @AllArgsConstructor
+@CrossOrigin
 public class VoteController {
 
     private final VoteService voteService;
+    private final ParticipantRepository participantRepository;
 
     @PostMapping
-    public ResponseEntity<String> voting(@RequestBody ParticipantModel participantModel) {
-        voteService.addEvent(participantModel);
-        return ResponseEntity.ok("Voto computado.");
+    public ResponseEntity<ParticipantModel> voting(@RequestBody ParticipantModel participantModel) {
+
+        Optional<ParticipantModel> responseOpt = participantRepository.findById(participantModel.getId());
+        if (responseOpt.isEmpty()) {
+            throw new RuntimeException("Código [" + participantModel.getId() + "] invalido para votação.");
+        }
+
+        ParticipantModel response = responseOpt.get();
+
+        voteService.addEvent(response);
+        return ResponseEntity.ok(response);
     }
 }

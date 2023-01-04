@@ -4,8 +4,10 @@ import me.dio.coding.votacao.bbb.api.model.ParticipantModel;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ParticipantRepository extends MongoRepository<ParticipantModel, String> {
 
-    ParticipantModel findByName(String name);
+    List<ParticipantModel> findByName(String name);
 }

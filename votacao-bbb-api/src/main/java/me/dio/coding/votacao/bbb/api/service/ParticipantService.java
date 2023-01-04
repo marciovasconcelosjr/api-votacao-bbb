@@ -27,7 +27,7 @@ public class ParticipantService {
         return participantRepository.findAll();
     }
 
-    public ParticipantModel searchByName(String name) {
+    public List<ParticipantModel> searchByName(String name) {
         return participantRepository.findByName(name);
     }
 }
